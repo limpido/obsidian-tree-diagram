@@ -1,7 +1,7 @@
 import { Plugin, MarkdownRenderer, Component } from 'obsidian';
 import { parseInput, treeView } from './util';
 
-export default class MyPlugin extends Plugin {
+export default class TreeDiagramPlugin extends Plugin {
 	component: Component;
 
 	async onload() {
