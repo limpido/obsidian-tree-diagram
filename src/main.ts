@@ -1,29 +1,13 @@
-import { Plugin, MarkdownRenderer, Component } from 'obsidian';
-import { parseInput, treeView } from './util';
+import { Plugin } from 'obsidian';
+import { TreeDiagramMarkdownRenderChild } from './TreeDiagramMarkdownRenderChild';
 
 export default class TreeDiagramPlugin extends Plugin {
-	component: Component;
 
 	async onload() {
-		console.log("tree load");
-		this.component = new Component();
-
 		this.registerMarkdownCodeBlockProcessor("tree", async (source, el, ctx) => {
-			let root;
-			let output: string[] = [];
-			let markdown: string;
-
-			root = parseInput(source);
-			if (root != null) {
-				output = treeView(root);
-			}
-			markdown = ["```", "\n", output.join("\n").trim(), "\n```"].join("");
-
-			await MarkdownRenderer.render(this.app, markdown, el, ctx.sourcePath, this.component);
+			ctx.addChild(new TreeDiagramMarkdownRenderChild(this, source, el, ctx));
 		});
 	}
 
-	onunload() {
-		console.log("tree unload");
-	}
+	onunload() { }
 }
