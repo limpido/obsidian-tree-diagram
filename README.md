@@ -1,5 +1,5 @@
-# Obsidian Tree Diagram
-This is an Obsidian plugin that converts directory structure formatted in tab-indented text to a tree diagram.
+# Tree Diagram
+This is an Obsidian plugin that converts tab-indented text to a tree diagram.
 
 ## Example
 Input:
